@@ -1,10 +1,8 @@
-﻿
-using CSharp.WPF.ADO.ConnectionModels.Models;
+﻿using CSharp.WPF.ADO.ConnectionModels.Models;
 using CSharp.WPF.ADO.ConnectionModels.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,104 +10,59 @@ using System.Windows.Controls;
 
 namespace CSharp.WPF.ADO.ConnectionModels.ViewModels
 {
-
-    public partial class ProductViewModel
+    public class ProductViewModel
     {
-
-        #region ProductViewModel Properties
-
-        private TextBox _tbProdName;
-
-        public TextBox tbProdName
-        {
-            get { return _tbProdName; }
-            set { _tbProdName = value; }
-        }
-
-        private TextBox _tbUnitsStock;
-
-        public TextBox tbUnitsStock
-        {
-            get { return _tbUnitsStock; }
-            set { _tbUnitsStock = value; }
-        }
-
-        public int ProductId
-        {
-            get { return productid; }
-            set { productid = value; }
-        }
-
-        #endregion
-
-        #region Private Members
+        public CrudOperationsInDataSet crud = new CrudOperationsInDataSet();
 
         public ObservableCollection<Product> ProductList { get; set; } = new ObservableCollection<Product>();
 
+        #region Private Members
 
-        private string prodname;
+        public TextBox TbProductName { get; set; }
 
+        public TextBox tbUnitsInStock { get; set; }
 
-        private string userlname;
-
-
-        private int productid;
-
+        public int ProductId = 0;
 
         #endregion
 
         #region Constructor
-
         public ProductViewModel()
         {
-            _tbProdName = new TextBox();
-
-            _tbUnitsStock = new TextBox();
-
-
+            TbProductName = new TextBox();
+            tbUnitsInStock = new TextBox();
             LoadData();
-
-
         }
-
         #endregion
-
         #region Load Data Northwind Database
-
         public void LoadData()
         {
-
-            // Products from Northwind DB
-
             if (ProductList != null)
             {
                 ProductList.Clear();
-                DataServices.GetProductsAsync(ProductList);
+                crud.FillDataSet();
+                crud.GetProducts(ProductList);
             }
         }
-
         #endregion
 
-        #region Initialize Listview
-        public void InitializeUserInput(TextBox tbProdName, TextBox tbUnitsStock)
+        #region SelectProduct
+        public void SelectProduct(int id)
         {
-            _tbProdName = tbProdName;
-
-            _tbUnitsStock = tbUnitsStock;
-
-
+            var row = crud.tblProducts.Rows.Find(id);
+            TbProductName.Text = row[1].ToString();
+            tbUnitsInStock.Text = row[2].ToString();
+            ProductId = id;
         }
-
         #endregion
 
         #region Helpers
-
         public void ClearUserInput()
         {
-            _tbProdName.Text = string.Empty;
-            _tbUnitsStock.Text = string.Empty;
-        }
+            TbProductName.Text = string.Empty;
+            tbUnitsInStock.Text = string.Empty;
 
+        }
         /// <summary>
         /// Reset ListView ItemsSource property, clear input fields
         /// and user id value
@@ -118,59 +71,47 @@ namespace CSharp.WPF.ADO.ConnectionModels.ViewModels
         {
             ClearUserInput();
             LoadData();
-            productid = -1;
         }
         #endregion
 
-        #region Relay Commands Product
-
-
-        public void SelectProduct(int id)
+        #region Initalize User input TextBox
+        public void InitializeUserInput(TextBox textBox, TextBox textBoxUnits)
         {
-
-            ProductId = id;
-
-            var query = from p in ProductList
-                        where p.ProductId == ProductId
-                        select p;
-
-            foreach (var item in query)
-            {
-                _tbProdName.Text = item.FirstName;
-                _tbUnitsStock.Text = item.LastName;
-
-            }
-
+            TbProductName = textBox;
+            tbUnitsInStock = textBoxUnits;
         }
-
-
-        public async Task AddProduct()
+        #endregion
+        #region AddProduct
+        public void AddProduct()
         {
-            var fname = _tbProdName.Text;
-            var lname = _tbUnitsStock.Text;
+            var productName = TbProductName.Text;
+            short unitInStock = Convert.ToInt16(tbUnitsInStock.Text);
 
-            await DataServices.AddProduct(fname, lname);
+            crud.InsertProduct(productName, unitInStock);
             Refresh_Page();
         }
+        #endregion
 
-
-        public async Task DeleteProduct()
+        #region EditProduct
+        public async void EditProduct()
         {
-            await DataServices.DeleteProduct(ProductId);
+            var updateproductname = TbProductName.Text;
+            short updateunitinstock = Convert.ToInt16(tbUnitsInStock.Text);
+            crud.EditProduct(ProductId, updateproductname, updateunitinstock);
             Refresh_Page();
         }
+        #endregion
 
-
-        public async Task EditProduct()
+        #region DeleteProduct
+        public void DeleteProduct()
         {
-            var updatefname = _tbProdName.Text;
-            var updatelname = _tbUnitsStock.Text;
-            await DataServices.EditProduct(ProductId, updatefname, updatelname);
+           
+            crud.DeleteProduct(ProductId);
             Refresh_Page();
-
         }
+        #endregion
 
-
+        #region RefreshProduct
         public void RefreshProduct()
         {
             Refresh_Page();

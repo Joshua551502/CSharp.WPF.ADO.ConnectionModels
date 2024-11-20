@@ -112,8 +112,8 @@
                             x:Name="ProductsBtn"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            
-                            Style="{StaticResource BtnStyle}">
+                            Click="ProductsBtn_Click"
+                            Style="{StaticResource BtnStyle}" Checked="ProductsBtn_Checked">
                             <Grid>
 
                                 <Image Source="/Assets/Images/nav-icon/img_product.png" Style="{StaticResource Image_Style}" />

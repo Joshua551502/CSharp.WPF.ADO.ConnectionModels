@@ -56,7 +56,7 @@
                             Margin="10,10,0,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            
+                            Click="DeleteEmp_Click"
                             Style="{StaticResource DeleteAppStyle}" />
                         <Button
                             Margin="10,10,10,0"

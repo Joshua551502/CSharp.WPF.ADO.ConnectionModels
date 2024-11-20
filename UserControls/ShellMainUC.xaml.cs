@@ -66,7 +66,7 @@ namespace CSharp.WPF.ADO.ConnectionModels.UserControls
 
         private void ProductsBtn_Click(object sender, RoutedEventArgs e)
         {
-            //FramePages.Source =  new Uri("/UserControls/ProductUC.xaml", UriKind.Relative);
+            FramePages.Source =  new Uri("/UserControls/ProductUC.xaml", UriKind.Relative);
         }
 
         private void CategoriesBtn_Click(object sender, RoutedEventArgs e)
@@ -78,5 +78,9 @@ namespace CSharp.WPF.ADO.ConnectionModels.UserControls
 
         #endregion
 
+        private void ProductsBtn_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

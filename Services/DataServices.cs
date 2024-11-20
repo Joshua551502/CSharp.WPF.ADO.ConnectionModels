@@ -104,7 +104,7 @@ namespace CSharp.WPF.ADO.ConnectionModels.Services
             else
             {
 
-                string insert = @"INSERT [dbo].[Employees] SET [LastName] = @LastName ,[FirstName] = @FirstName";
+                string insert = @"INSERT INTO [dbo].[Employees] ([LastName], [FirstName]) VALUES (@LastName, @FirstName); ";
 
                 try
                 {
@@ -197,7 +197,47 @@ namespace CSharp.WPF.ADO.ConnectionModels.Services
         #region Async Task Delete Employee
         public static async Task DeleteEmployee(int empID)
         {
+            if(empID >= 12)
+            {
+                MessageBox.Show("Employee cannot be deleted from list!");
+                await Task.CompletedTask;
+            }
+            else
+            {
+                string delete = @"DELETE FROM [dbo].[Employees] WHERE [EmployeeID]= @EmployeeID";
 
+                try
+                {
+
+                    var connection = new SqlConnection(GetConnectionString());
+                    await connection.OpenAsync();
+
+                    var cmd = new SqlCommand(delete, connection);
+
+                    cmd.Parameters.AddWithValue("EmployeeID", empID);
+
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+
+                        MessageBox.Show($"Employee was deleted!");
+                        await Task.CompletedTask;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Employee was not deleted!");
+                        await Task.CompletedTask;
+                    }
+
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    await HandleException(ex);
+                }
+            }
 
         }
         #endregion

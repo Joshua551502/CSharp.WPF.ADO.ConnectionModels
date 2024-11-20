@@ -32,7 +32,7 @@
                         x:Name="PageHeader"
                         Margin="5,0,5,0"
                         VerticalAlignment="Center"
-                        Content="Product"
+                        Content="Products"
                         FontSize="25"
                         FontWeight="Bold"
                         Foreground="White" />
@@ -42,28 +42,25 @@
                             Margin="10,10,0,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            x:Name="AddProd"
-                            Click="AddProd_Click"
+                            x:Name="AddBtn"
                             Style="{StaticResource AddAppStyle}" />
                         <Button
                             Margin="10,9,0,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            x:Name="EditProd"
-                            Click="EditProd_Click"
+                            x:Name="EditBtn"
                             Style="{StaticResource EditAppStyle}" />
                         <Button
                             Margin="10,10,0,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            
+                            x:Name="DeleteBtn"
                             Style="{StaticResource DeleteAppStyle}" />
                         <Button
                             Margin="10,10,10,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
-                            x:Name="RefreshProducts"
-                            Click="RefreshProducts_Click"
+                            x:Name="RefreshBtn"
                             Style="{StaticResource RefreshAppStyle}" />
                     </StackPanel>
                 </Grid>
@@ -103,7 +100,7 @@
                 Foreground="White"
                 Text="Units In Stock" />
             <TextBox
-                x:Name="tbUnitsStock"
+                x:Name="tbUnitsInStock"
                 Margin="20,10,20,0"
                 Background="{StaticResource LightGrayColorBrush}"
                 BorderThickness="0,0,0,1"
@@ -113,13 +110,13 @@
 
             <!--  Number of Products  -->
             <TextBlock
-                x:Name="tbNumProd"
+                x:Name="tbNumEmp"
                 Margin="20,35,0,0"
                 FontFamily="Montserrat"
                 FontSize="16"
                 FontWeight="Medium"
                 Foreground="White"
-                Text="Number of Products: " />
+                Text="Number of Products:" />
 
 
         </StackPanel>
@@ -138,8 +135,8 @@
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListView.ItemContainerStyle>
-            <ListView.ItemTProdlate>
-                <DataTProdlate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
                     <Border
                         Height="50"
                         Margin="0"
@@ -163,18 +160,18 @@
                                     Height="30"
                                     Margin="10,0,0,0">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="/Assets/Images/menu-icon/person.fill@2x.png" />
+                                        <ImageBrush ImageSource="/Assets/Images/menu-icon/globe.americas.fill@2x.png" />
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <StackPanel Margin="5,11,0,0">
-                                    <Label Content="{Binding FullName}" Foreground="White" />
+                                    <Label Content="{Binding ProductName}" Foreground="White" />
                                 </StackPanel>
                             </StackPanel>
 
                         </Button>
                     </Border>
-                </DataTProdlate>
-            </ListView.ItemTProdlate>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </UserControl>

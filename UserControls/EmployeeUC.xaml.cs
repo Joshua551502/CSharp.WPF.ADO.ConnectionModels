@@ -47,7 +47,7 @@ namespace CSharp.WPF.ADO.ConnectionModels.UserControls
 
         private async void AddEmp_Click(object sender, RoutedEventArgs e)
         {
-            //await ViewModel.AddEmployee();
+            await ViewModel.AddEmployee();
         }
 
         private void RefreshEmployees_Click(object sender, RoutedEventArgs e)
@@ -58,6 +58,10 @@ namespace CSharp.WPF.ADO.ConnectionModels.UserControls
         private async void EditEmp_Click(object sender, RoutedEventArgs e)
         {
             await ViewModel.EditEmployee();
+
+        }private async void DeleteEmp_Click(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.DeleteEmployee();
         }
     }
 }

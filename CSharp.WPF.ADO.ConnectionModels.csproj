@@ -72,8 +72,8 @@
     <Compile Include="UserControls\ShellMainUC.xaml.cs">
       <DependentUpon>ShellMainUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>

@@ -1,10 +1,7 @@
 ﻿using CSharp.WPF.ADO.ConnectionModels.Models;
-using CSharp.WPF.ADO.ConnectionModels.Services;
 using CSharp.WPF.ADO.ConnectionModels.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,38 +23,21 @@ namespace CSharp.WPF.ADO.ConnectionModels.UserControls
     public partial class ProductUC : UserControl
     {
         ProductViewModel ViewModel = new ProductViewModel();
-        public ObservableCollection<Product> ProductList { get; set; }
-
         public ProductUC()
         {
             InitializeComponent();
-            ViewModel.InitializeUserInput(tbEmpFName, tbEmpLName);
+
+            ViewModel.InitializeUserInput(tbProdName, tbUnitsInStock);
             this.DataContext = ViewModel;
         }
 
-
-        private void EmpItem_Click(object sender, RoutedEventArgs e)
+        private void ProdItem_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             Product selectedProduct = (Product)button.DataContext;
-            int ProductId = selectedProduct.ProductId;
-            ViewModel.ProductId = ProductId;
-            ViewModel.SelectProduct(ProductId);
-        }
-
-        private async void AddEmp_Click(object sender, RoutedEventArgs e)
-        {
-            //await ViewModel.AddProduct();
-        }
-
-        private void RefreshProducts_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.LoadData();
-        }
-
-        private async void EditEmp_Click(object sender, RoutedEventArgs e)
-        {
-            await ViewModel.EditProduct();
+            var productId = selectedProduct.ProductId;
+            ViewModel.ProductId = productId;
+            ViewModel.SelectProduct(productId);
         }
     }
 }
