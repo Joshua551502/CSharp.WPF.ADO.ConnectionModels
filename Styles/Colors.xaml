@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <!--  Color Palette  #292B2F FF1F1F1F  #FF383838  -->
+
+    <Color x:Key="LightGrayColor">#FF383838</Color>
+    <SolidColorBrush x:Key="LightGrayColorBrush" Color="{StaticResource LightGrayColor}" />
+
+    <Color x:Key="DarkGrayColor">#292B2F</Color>
+    <SolidColorBrush x:Key="DarkGrayColorBrush" Color="{StaticResource DarkGrayColor}" />
+
+    <Color x:Key="VioletColor">#FF7160E8</Color>
+    <SolidColorBrush x:Key="VioletColorBrush" Color="{StaticResource VioletColor}" />
+
+    <Color x:Key="CarRentalLightGreen">#FF169758</Color>
+    <SolidColorBrush x:Key="CarRentalLightGreenBrush" Color="{StaticResource CarRentalLightGreen}" />
+
+    <Color x:Key="CarRentalDarkGreen">#FF127E49</Color>
+    <SolidColorBrush x:Key="CarRentalDarkGreenBrush" Color="{StaticResource CarRentalDarkGreen}" />
+
+    <Color x:Key="ForegroundVeryDark">#000000</Color>
+    <SolidColorBrush x:Key="ForegroundVeryDarkBrush" Color="{StaticResource ForegroundVeryDark}" />
+
+    <Color x:Key="ForegroundLight">#ffffff</Color>
+    <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}" />
+</ResourceDictionary>

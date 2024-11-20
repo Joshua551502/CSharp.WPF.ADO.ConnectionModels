@@ -1,0 +1,21 @@
+﻿<Window
+    x:Class="CSharp.WPF.ADO.ConnectionModels.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:CSharp.WPF.ADO.ConnectionModels.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CSharp.WPF.ADO.ConnectionModels.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="AppWindow"
+    Title="Northwind App"
+    Width="960"
+    Height="800"
+    MinWidth="960"
+    MinHeight="800"
+    Icon="/Assets/Images/northwind.png"
+    MouseDown="AppWindow_MouseDown"
+    Style="{StaticResource WindowStyle}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <components:ShellMainUC x:Name="ucShellMain" />
+</Window>
