@@ -60,9 +60,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="NorthwindDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Services\CrudOperationsInDataSet.cs" />
+    <Compile Include="Services\CrudOperationsTypedDataSet.cs" />
     <Compile Include="Services\DataServices.cs" />
+    <Compile Include="UserControls\CategoryUC.xaml.cs">
+      <DependentUpon>CategoryUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EmployeeUC.xaml.cs">
       <DependentUpon>EmployeeUC.xaml</DependentUpon>
     </Compile>
@@ -116,6 +126,10 @@
     <Page Include="Styles\Windows.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\CategoryUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\EmployeeUC.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -207,6 +221,17 @@
     <Resource Include="Fonts\Montserrat-ThinItalic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <None Include="NorthwindDataSet.xsc">
+      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NorthwindDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="NorthwindDataSet.xss">
+      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
