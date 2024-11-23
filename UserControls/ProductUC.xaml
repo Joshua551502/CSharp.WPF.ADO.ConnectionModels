@@ -39,29 +39,37 @@
                     <!--  Command Buttons  -->
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                         <Button
-                            Margin="10,10,0,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            x:Name="AddBtn"
-                            Style="{StaticResource AddAppStyle}" />
+                        Margin="10,10,0,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        x:Name="AddBtn"
+                        Style="{StaticResource AddAppStyle}"
+                           Click="AddBtn_Click" />
+
                         <Button
-                            Margin="10,9,0,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
+                        Margin="10,9,0,0"
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Top"
                             x:Name="EditBtn"
-                            Style="{StaticResource EditAppStyle}" />
+                        Style="{StaticResource EditAppStyle}"
+                        Click="EditBtn_Click" />
+
                         <Button
-                            Margin="10,10,0,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            x:Name="DeleteBtn"
-                            Style="{StaticResource DeleteAppStyle}" />
+    Margin="10,10,0,0"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Top"
+    x:Name="DeleteBtn"
+    Style="{StaticResource DeleteAppStyle}"
+    Click="DeleteBtn_Click" />
+
                         <Button
-                            Margin="10,10,10,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            x:Name="RefreshBtn"
-                            Style="{StaticResource RefreshAppStyle}" />
+    Margin="10,10,10,0"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Top"
+    x:Name="RefreshBtn"
+    Style="{StaticResource RefreshAppStyle}"
+    Click="RefreshBtn_Click" />
+
                     </StackPanel>
                 </Grid>
             </Border>

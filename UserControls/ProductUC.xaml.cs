@@ -39,5 +39,26 @@ namespace CSharp.WPF.ADO.ConnectionModels.UserControls
             ViewModel.ProductId = productId;
             ViewModel.SelectProduct(productId);
         }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.AddProduct();
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.EditProduct();
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.DeleteProduct();
+        }
+
+        private void RefreshBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Refresh_Page();
+        }
+
     }
 }

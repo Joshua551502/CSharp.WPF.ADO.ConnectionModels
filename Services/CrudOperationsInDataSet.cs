@@ -115,8 +115,9 @@ namespace CSharp.WPF.ADO.ConnectionModels.Services
 
         private bool IsParameterEmpty(string name)
         {
-            throw new NotImplementedException();
+            return string.IsNullOrWhiteSpace(name);
         }
+
         #endregion
 
         #region EditProduct

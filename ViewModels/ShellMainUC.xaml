@@ -127,6 +127,7 @@
                             x:Name="CategoriesBtn"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
+                            Click="CategoriesBtn_Click"
                             Style="{StaticResource BtnStyle}">
                             <Grid>
 
@@ -197,7 +198,7 @@
                             Grid.Column="1"
                             Margin="0,10,0,0"
                             NavigationUIVisibility="Hidden" />
-
+                        
                     </Grid>
                 </Grid>
 

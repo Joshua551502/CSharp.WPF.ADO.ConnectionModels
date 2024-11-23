@@ -12,9 +12,11 @@ namespace CSharp.WPF.ADO.ConnectionModels.Services
     public class CrudOperationsTypedDataSet
     {
         #region Private Members
+
         private NorthwindDataSetTableAdapters.CategoriesTableAdapter _adapter;
         private NorthwindDataSet.CategoriesDataTable _tbCategories;
         #endregion
+
         #region Constructor
 
         public CrudOperationsTypedDataSet()
@@ -52,14 +54,106 @@ namespace CSharp.WPF.ADO.ConnectionModels.Services
             }
         }
 
+        public string GetCategoryNameById(int id)
+        {
+            var row = _tbCategories.FindByCategoryID(id);
+
+            if(row != null)
+            {
+                return row.CategoryName;
+             
+            }
+            return String.Empty;
+        }
+
+        public void InsertCategory(string name)
+        {
+            if (IsParameterEmpty(name))
+            {
+                MessageBox.Show("Enter a name for Category!");
+                return;
+            }
+
+            try
+            {
+                _adapter.Insert(name);
+                MessageBox.Show($"Category {name} added successfully!");
+            }
+            catch (Exception ex)
+            {
+                Task.FromException(ex);
+                throw;
+            }
+        }
+
+        public void EditCategory(int id, string name)
+        {
+            if (IsParameterEmpty(name))
+            {
+                MessageBox.Show("Enter a name for Category!");
+                return;
+            }
+
+            try
+            {
+                var row = _tbCategories.FindByCategoryID(id);
+                if (row != null)
+                {
+                    row.CategoryName = name;
+                    _adapter.Update(_tbCategories);
+                    MessageBox.Show($"Category {name} updated successfully!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Task.FromException(ex);
+                throw;
+            }
+        }
+
+        private bool IsParameterEmpty(string parameter)
+        {
+            return string.IsNullOrWhiteSpace(parameter);
+        }
+
+        public void DeleteCategory(int id)
+        {
+            if (id <= 0)
+            {
+                MessageBox.Show("Please select a valid category to delete!");
+                return;
+            }
+
+            try
+            {
+                var name = GetCategoryNameById(id);
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    _adapter.Delete(id, name);
+                    MessageBox.Show($"Category {name} deleted successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("The category does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Task.FromException(ex);
+                throw;
+            }
+        }
+
+
         public void GetCategoryByName(string name)
         {
             _tbCategories = _adapter.GetCategoryByName(name);
-            if (_tbCategories.Count != null)
+            if (_tbCategories != null && _tbCategories.Count > 0)
             {
                 var row = _tbCategories[0];
 
-                MessageBox.Show($"\nYou selected {row.CategoryName} for deletion!");
+                MessageBox.Show($"You selected {row.CategoryName} for deletion!");
             }
         }
 

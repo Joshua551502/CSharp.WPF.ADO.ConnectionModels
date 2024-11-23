@@ -79,7 +79,8 @@
     <Compile Include="UserControls\ProductUC.xaml.cs">
       <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ShellMainUC.xaml.cs">
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ShellMainUC.xaml.cs">
       <DependentUpon>ShellMainUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
@@ -139,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ShellMainUC.xaml">
+    <Page Include="ViewModels\ShellMainUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

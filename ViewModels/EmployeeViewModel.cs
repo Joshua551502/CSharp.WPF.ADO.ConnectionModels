@@ -167,7 +167,6 @@ namespace CSharp.WPF.ADO.ConnectionModels.ViewModels
             var updatelname = _tbLName.Text;
             await DataServices.EditEmployee(EmployeeId, updatefname, updatelname);
             Refresh_Page();
-
         }
 
         
