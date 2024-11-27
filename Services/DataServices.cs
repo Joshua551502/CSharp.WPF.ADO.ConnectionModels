@@ -21,9 +21,10 @@ namespace CSharp.WPF.ADO.ConnectionModels.Services
         /// <returns></returns>
         public static string GetConnectionString()
         {
-            var connStr = CSharp.WPF.ADO.ConnectionModels.Properties.Settings.Default.NorthwindSqlServer;
-            return connStr;
+            return "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True;Connect Timeout=30;";
         }
+
+
         #endregion
 
         #region Helpers

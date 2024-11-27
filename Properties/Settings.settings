@@ -13,5 +13,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=.\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True;TrustServerCertificate=True</Value>
     </Setting>
+    <Setting Name="NorthwindMDF" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=(LocalDB)\\MSSQLLocalDB;AttachedDbFilename=|DataDirectory|\AppData\Northwind.mdf;Trusted_Connection=Yes;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

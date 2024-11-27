@@ -42,5 +42,15 @@ namespace CSharp.WPF.ADO.ConnectionModels.Properties {
                 return ((string)(this["NorthwindConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=(LocalDB)\\\\MSSQLLocalDB;AttachedDbFilename=|DataDirectory|\\AppData\\Northwi" +
+            "nd.mdf;Trusted_Connection=Yes;")]
+        public string NorthwindMDF {
+            get {
+                return ((string)(this["NorthwindMDF"]));
+            }
+        }
     }
 }
